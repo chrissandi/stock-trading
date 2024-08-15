@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="3" author="chrissandi">
+        <createTable tableName="profile_holding">
+            <column name="holding_id" type="uuid" defaultValueComputed="gen_random_uuid()">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stock_code" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="simple_transaction_list" type="VARCHAR(2000)"/>
+            <column name="average_purchase_price" type="NUMERIC"/>
+            <column name="total_investment_value" type="NUMERIC"/>
+            <column name="total_quantity" type="NUMERIC"/>
+            <column name="created_date" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleted_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleted_flag" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

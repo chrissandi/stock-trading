@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="4" author="chrissandi">
+        <createTable tableName="transaction">
+            <column name="transaction_id" type="uuid" defaultValueComputed="gen_random_uuid()">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stock_code" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_number" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_verb" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="NUMERIC">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="NUMERIC">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_transaction_value" type="NUMERIC">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_fee" type="NUMERIC">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleted_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleted_flag" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

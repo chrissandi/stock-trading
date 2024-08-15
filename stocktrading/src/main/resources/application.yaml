@@ -1,0 +1,35 @@
+# Spring Boot application properties
+
+# Server port
+server:
+  port: 8081
+
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  datasource:
+    url: jdbc:postgresql://localhost:5432/stocktrading
+    username: userstocktrading
+    password: password123
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:/db/changelog/master.xml
+  jpa:
+    hibernate:
+      ddl-auto: update # Use 'update' for development; 'validate' or 'none' for production
+    show-sql: true # Set to 'true' to see SQL queries in the console
+    properties:
+      hibernate:
+        format_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
